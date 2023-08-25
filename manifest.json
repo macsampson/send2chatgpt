@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Send to ChatGPT",
+  "version": "1.0",
+  "description": "Select any text, right click, and click 'Send to ChatGPT' to send it to the OpenAI ChatGPT chatbot!",
+  "permissions": ["activeTab", "contextMenus", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/chatgpt-16.png",
+      "48": "assets/chatgpt-48.png",
+      "128": "assets/chatgpt-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/chatgpt-16.png",
+    "48": "assets/chatgpt-48.png",
+    "128": "assets/chatgpt-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*"],
+      "run_at": "document_end",
+      "js": ["content.js"]
+    }
+  ],
+  "host_permissions": ["https://chat.openai.com/*"]
+}
